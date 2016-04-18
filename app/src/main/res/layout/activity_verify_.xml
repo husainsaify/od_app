@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.OtpVerificationActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,35 +29,36 @@
             android:layout_below="@+id/title_text"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:text="@string/enter_your_school_register_mobile_number"
+            android:text="@string/enter_your_otp_code"
             android:textColor="@android:color/white" />
 
         <TableLayout
+            android:id="@+id/edittext_table_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/subheading"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:id="@+id/edittext_table_layout"
-            android:stretchColumns="1"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp">
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:stretchColumns="1">
 
             <TableRow>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_phone_white" />
+                    android:src="@drawable/ic_verified_white" />
 
                 <EditText
-                    android:id="@+id/number_edittext"
+                    android:id="@+id/otp_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_mobile_number"
-                    android:inputType="number"
-                    android:maxLength="10"
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
+                    android:hint="@string/enter_otp"
+                    android:inputType="number"
+                    android:maxLength="4"
                     android:textColor="@android:color/white"
                     android:textColorHint="@android:color/white" />
             </TableRow>
@@ -66,15 +66,15 @@
         </TableLayout>
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/verify_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edittext_table_layout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:background="@drawable/dark_primary_button"
-            android:textColor="@color/colorWhite"
-            android:text="@string/login" />
+            android:text="@string/verify"
+            android:textColor="@color/colorWhite" />
 
     </RelativeLayout>
 
