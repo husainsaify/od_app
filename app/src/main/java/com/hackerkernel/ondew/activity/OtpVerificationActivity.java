@@ -155,9 +155,9 @@ public class OtpVerificationActivity extends AppCompatActivity {
             SimplePojo current = JsonParser.SimpleParser(response);
             if (current.isReturned()){
                 //success
-                //store user in SP
+                //TODO: store user in MySharedPreference
 
-                //Go to HomeActivity
+                //TODO:: Go to HomeActivity
 
             }else {
                 //error
