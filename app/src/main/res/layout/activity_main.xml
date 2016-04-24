@@ -9,18 +9,18 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:text="@string/app_name"
             android:textColor="@android:color/white"
-            android:textSize="40sp"
-            android:textStyle="bold" />
+            android:textSize="35sp" />
 
         <TextView
             android:id="@+id/subheading"
@@ -72,6 +72,7 @@
             android:layout_below="@+id/edittext_table_layout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/dark_primary_button"
             android:textColor="@color/colorWhite"
             android:text="@string/login" />

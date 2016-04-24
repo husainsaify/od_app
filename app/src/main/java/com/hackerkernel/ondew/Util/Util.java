@@ -1,7 +1,9 @@
 package com.hackerkernel.ondew.Util;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.provider.Settings;
@@ -25,13 +27,23 @@ public class Util {
         final NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnected();
     }
-    public static void showNoInternetSnackbar(final Context context, View view){
+
+    public static void showNoInternetSnackbar(final Application application, View view){
         Snackbar.make(view,R.string.NO_INTERNET_AVAILABLE,Snackbar.LENGTH_INDEFINITE)
-                .setAction(R.string.setting, new View.OnClickListener() {
+                .setAction(R.string.settings, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        context.startActivity(new Intent(Settings.ACTION_SETTINGS));
+                        Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        application.startActivity(intent);
                     }
                 }).show();
+    }
+
+    public static void showRedSnackbar(View layout,String message){
+        Snackbar snackbar = Snackbar.make(layout,message,Snackbar.LENGTH_LONG);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundColor(Color.RED);
+        snackbar.show();
     }
 }

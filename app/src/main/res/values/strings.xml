@@ -1,11 +1,16 @@
 <resources>
     <string name="app_name">onDew</string>
-    <string name="enter_your_school_register_mobile_number">Enter Your School Register Mobile Number</string>
+    <string name="enter_your_school_register_mobile_number">Enter Your School / Institution Registered Mobile Number</string>
     <string name="enter_mobile_number">Enter Mobile Number</string>
     <string name="login">login</string>
     <string name="enter_your_otp_code">Enter Your OTP Code</string>
     <string name="verify">verify</string>
     <string name="enter_otp">Enter OTP</string>
     <string name="NO_INTERNET_AVAILABLE">No Internet Available</string>
-    <string name="setting">setting</string>
+    <string name="settings">settings</string>
+    <string name="requesting_otp">Requesting OTP..</string>
+    <string name="invalid_moble_number">Invalid mobile number</string>
+    <string name="invalid_moble_unable_to_open_otp">Invalid mobile number. Unable to open OTP Verification</string>
+    <string name="otp_shoud_be_4_char">OTP should be of 4 characters long</string>
+    <string name="verifying_otp">Verifying OTP..</string>
 </resources>
