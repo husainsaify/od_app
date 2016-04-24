@@ -15,17 +15,17 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.hackerkernel.ondew.Networks.MyVolley;
+import com.hackerkernel.ondew.network.MyVolley;
 import com.hackerkernel.ondew.R;
 import com.hackerkernel.ondew.Util.Util;
 import com.hackerkernel.ondew.extras.ApiUrl;
 import com.hackerkernel.ondew.extras.Keys;
 import com.hackerkernel.ondew.model.SimplePojo;
 import com.hackerkernel.ondew.parser.JsonParser;
+import com.hackerkernel.ondew.storage.MySharedPreference;
 
 import org.json.JSONException;
 
-import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +43,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue;
     private ProgressDialog pd;
     private static OtpVerificationActivity mInstance;
+    private MySharedPreference sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,9 @@ public class OtpVerificationActivity extends AppCompatActivity {
         pd = new ProgressDialog(this);
         pd.setMessage(getString(R.string.verifying_otp));
         pd.setCancelable(true);
+
+        //init sp
+        sp = MySharedPreference.getInstance();
 
         //get mobile from intent
         if (getIntent().hasExtra(Keys.COM_MOBILE)){
@@ -155,10 +159,11 @@ public class OtpVerificationActivity extends AppCompatActivity {
             SimplePojo current = JsonParser.SimpleParser(response);
             if (current.isReturned()){
                 //success
-                //TODO: store user in MySharedPreference
+                sp.setMobile(mMobile);
+                sp.setLoginStatus();
 
-                //TODO:: Go to HomeActivity
-
+                //go to home activity
+                Util.goToHomeActivity(getApplication());
             }else {
                 //error
                 Util.showRedSnackbar(mLayoutForSnackbar,current.getMesssage());

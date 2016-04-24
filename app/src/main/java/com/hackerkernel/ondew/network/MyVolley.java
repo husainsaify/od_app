@@ -1,4 +1,4 @@
-package com.hackerkernel.ondew.Networks;
+package com.hackerkernel.ondew.network;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;

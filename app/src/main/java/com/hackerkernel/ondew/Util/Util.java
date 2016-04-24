@@ -1,5 +1,6 @@
 package com.hackerkernel.ondew.Util;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
@@ -8,9 +9,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.IntentCompat;
 import android.view.View;
 
 import com.hackerkernel.ondew.R;
+import com.hackerkernel.ondew.activity.HomeActivity;
 import com.hackerkernel.ondew.infrastructure.MyApplication;
 
 /**
@@ -45,5 +48,11 @@ public class Util {
         View sbView = snackbar.getView();
         sbView.setBackgroundColor(Color.RED);
         snackbar.show();
+    }
+
+    public static void goToHomeActivity(Application application){
+        Intent intent = new Intent(application, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+        application.startActivity(intent);
     }
 }
