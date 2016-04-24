@@ -42,11 +42,14 @@ public class OtpVerificationActivity extends AppCompatActivity {
     private String mMobile;
     private RequestQueue mRequestQueue;
     private ProgressDialog pd;
+    private static OtpVerificationActivity mInstance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_otp);
         ButterKnife.bind(this);
+
+        mInstance = this;
 
         //init volley
         mRequestQueue = MyVolley.getInstance().getRequestQueue();
@@ -68,6 +71,20 @@ public class OtpVerificationActivity extends AppCompatActivity {
         mVerifyView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checkInternetAndVerifyOtp();
+            }
+        });
+    }
+
+    public static OtpVerificationActivity getInstance(){
+        return mInstance;
+    }
+
+    public void updateUI(final String otp){
+        OtpVerificationActivity.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mOtpView.setText(otp);
                 checkInternetAndVerifyOtp();
             }
         });
@@ -138,7 +155,10 @@ public class OtpVerificationActivity extends AppCompatActivity {
             SimplePojo current = JsonParser.SimpleParser(response);
             if (current.isReturned()){
                 //success
-                Toast.makeText(getApplicationContext(),current.getMesssage(),Toast.LENGTH_LONG).show();
+                //store user in SP
+
+                //Go to HomeActivity
+
             }else {
                 //error
                 Util.showRedSnackbar(mLayoutForSnackbar,current.getMesssage());
