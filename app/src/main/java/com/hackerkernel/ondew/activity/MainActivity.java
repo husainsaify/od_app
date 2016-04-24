@@ -15,6 +15,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.hackerkernel.ondew.infrastructure.BaseActivity;
 import com.hackerkernel.ondew.network.MyVolley;
 import com.hackerkernel.ondew.R;
 import com.hackerkernel.ondew.Util.Util;
@@ -31,7 +32,7 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     //views
     @Bind(R.id.number_edittext) EditText mNumberView;

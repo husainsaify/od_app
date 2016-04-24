@@ -15,6 +15,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.hackerkernel.ondew.infrastructure.BaseActivity;
 import com.hackerkernel.ondew.network.MyVolley;
 import com.hackerkernel.ondew.R;
 import com.hackerkernel.ondew.Util.Util;
@@ -32,7 +33,7 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class OtpVerificationActivity extends AppCompatActivity {
+public class OtpVerificationActivity extends BaseActivity {
     private static final String TAG = OtpVerificationActivity.class.getSimpleName();
     @Bind(R.id.layoutForSnackbar) View mLayoutForSnackbar;
     @Bind(R.id.otp_edittext) EditText mOtpView;

@@ -11,11 +11,13 @@ import com.hackerkernel.ondew.adapter.FragmentViewPagerAdapter;
 import com.hackerkernel.ondew.fragment.ChatFragment;
 import com.hackerkernel.ondew.fragment.FeesFragment;
 import com.hackerkernel.ondew.fragment.NotificationFragment;
+import com.hackerkernel.ondew.infrastructure.BaseActivity;
+import com.hackerkernel.ondew.infrastructure.BaseAuthActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseAuthActivity {
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.tab) TabLayout mTabLayout;
     @Bind(R.id.viewpager) ViewPager mViewPager;
