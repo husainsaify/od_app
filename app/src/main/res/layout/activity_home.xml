@@ -2,7 +2,8 @@
 <android.support.v4.widget.DrawerLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer">
 
     <!-- Main container -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -49,7 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:id="@+id/navigationView"/>
+        android:id="@+id/navigationView"
+        app:headerLayout="@layout/layout_navigation_header"
+        app:menu="@menu/menu_drawer"/>
     <!-- / nav drawer -->
 
 </android.support.v4.widget.DrawerLayout>
