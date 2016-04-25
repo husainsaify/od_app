@@ -1,11 +1,12 @@
 package com.hackerkernel.ondew.activity;
 
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -18,7 +19,6 @@ import com.hackerkernel.ondew.adapter.FragmentViewPagerAdapter;
 import com.hackerkernel.ondew.fragment.ChatFragment;
 import com.hackerkernel.ondew.fragment.FeesFragment;
 import com.hackerkernel.ondew.fragment.NotificationFragment;
-import com.hackerkernel.ondew.infrastructure.BaseActivity;
 import com.hackerkernel.ondew.infrastructure.BaseAuthActivity;
 
 import butterknife.Bind;
@@ -28,7 +28,11 @@ public class HomeActivity extends BaseAuthActivity {
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.tab) TabLayout mTabLayout;
     @Bind(R.id.viewpager) ViewPager mViewPager;
+    @Bind(R.id.navigationView) NavigationView mNavigationView;
+    @Bind(R.id.drawerLayout) DrawerLayout mDrawerLayout;
+
     private DrawerLayout drawerlayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,17 +46,15 @@ public class HomeActivity extends BaseAuthActivity {
 
         setupViewPager(mViewPager);
         mTabLayout.setupWithViewPager(mViewPager);
-        initnavigationdrawer();
+        initNavigationDrawer();
     }
 
-    private void initnavigationdrawer() {
-        NavigationView navigationview = (NavigationView) findViewById(R.id.navigationView);
-        navigationview.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+    private void initNavigationDrawer() {
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 int id = item.getItemId();
                 switch (id) {
-
                     case R.id.home:
                         Toast.makeText(getApplicationContext(),"HOME",Toast.LENGTH_LONG).show();
                         drawerlayout.closeDrawers();
@@ -65,30 +67,17 @@ public class HomeActivity extends BaseAuthActivity {
                         Toast.makeText(getApplicationContext(),"Logout",Toast.LENGTH_LONG).show();
                         drawerlayout.closeDrawers();
                         break;
-                    case R.id.setting:
-                        finish();
                 }
                 return true;
 
             }
         });
-        View header = navigationview.getHeaderView(0);
-        TextView email = (TextView) findViewById(R.id.tv_email);
-        email.setText("murtaza.agz@gmai.com");
-        drawerlayout = (DrawerLayout) findViewById(R.id.drawer);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerlayout,R.string.drawer_open,R.string.drawer_close){
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
+        View header = mNavigationView.getHeaderView(0);
+        TextView email = (TextView) header.findViewById(R.id.tv_email);
+        email.setText("murtaza.agz@gmail.com");
 
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-            }
-        }; 
-
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,mToolbar,R.string.open,R.string.close);
+        mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
     }
 
 
@@ -100,5 +89,10 @@ public class HomeActivity extends BaseAuthActivity {
         adapter.addFragment(new ChatFragment(),"Chat");
         viewPager.setAdapter(adapter);
     }
-   
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        actionBarDrawerToggle.syncState();
+    }
 }

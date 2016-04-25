@@ -19,6 +19,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 
     <string-array name="nav_drawer_items">
         <item >Home</item>
